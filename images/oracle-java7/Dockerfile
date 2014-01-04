@@ -1,4 +1,4 @@
-FROM ubuntu:12.04
+FROM crosswise/base
 
 RUN apt-get install -y python-software-properties software-properties-common
 RUN add-apt-repository ppa:webupd8team/java

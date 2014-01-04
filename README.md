@@ -1,4 +1,5 @@
-# Instant RelateIQ Development Environment
+# Instant Crosswise Development Environment
+# Based on RelateIQ great work
 
 Read through [A Docker Dev Environment in 24 Hours! (Part 2 of 2)](http://blog.relateiq.com/a-docker-dev-environment-in-24-hours-part-2-of-2/) then come back here.
 

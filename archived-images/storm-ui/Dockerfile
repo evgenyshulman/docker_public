@@ -1,4 +1,4 @@
-FROM relateiq/storm-base
+FROM crosswise/storm-base
 
 ADD storm.yaml /storm/conf/storm.yaml
 ADD storm-ui-start.sh storm/storm-ui-start.sh

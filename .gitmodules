@@ -1,0 +1,6 @@
+[submodule "images/collectd-graphite"]
+	path = images/collectd-graphite
+	url = git@github.com:evgenyshulman/collectd-graphite.git
+[submodule "images/docker-graphite"]
+	path = images/docker-graphite
+	url = git@github.com:arcus-io/docker-graphite.git

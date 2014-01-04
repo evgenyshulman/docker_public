@@ -1,4 +1,4 @@
-FROM relateiq/storm-base
+FROM crosswise/storm-base
 
 ADD storm.yaml /storm/conf/storm.yaml
 ADD storm_util.sh /storm/storm_util.sh

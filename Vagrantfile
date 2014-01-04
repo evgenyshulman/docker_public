@@ -12,6 +12,12 @@ Vagrant::Config.run do |config|
   config.vm.box = BOX_NAME
   config.vm.box_url = BOX_URI
 
+  config.ssh.forward_agent = true
+
+  #(49000..49900).each do |port|
+  #  config.vm.network "forwarded_port", guest: port, host: port, auto_correct: true
+  #end
+
   #Shipyard
   config.vm.forward_port 8005, 8005
   #redis
@@ -51,6 +57,12 @@ Vagrant::Config.run do |config|
   config.vm.forward_port 5556, 5556
   config.vm.forward_port 5557, 5557
   config.vm.forward_port 4567, 4567
+
+  # graphite , collectd
+  config.vm.forward_port 2003, 2003
+  config.vm.forward_port 41080, 41080
+  config.vm.forward_port 41022, 41022
+  config.vm.forward_port 41826, 41826
 
   # Provision docker and new kernel if deployment was not done.
   # It is assumed Vagrant can successfully launch the provider instance.

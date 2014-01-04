@@ -1,4 +1,4 @@
-FROM relateiq/oracle-java7
+FROM crosswise/oracle-java7
 
 # apt
 RUN apt-get update
