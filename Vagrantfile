@@ -7,62 +7,62 @@ VF_BOX_URI = ENV['BOX_URI'] || "http://files.vagrantup.com/precise64_vmware_fusi
 AWS_REGION = ENV['AWS_REGION']
 AWS_AMI    = ENV['AWS_AMI']
 
-Vagrant::Config.run do |config|
-  # Setup virtual machine box. This VM configuration code is always executed.
+Vagrant.configure("2") do |config|
+   # Setup virtual machine box. This VM configuration code is always executed.
   config.vm.box = BOX_NAME
   config.vm.box_url = BOX_URI
 
   config.ssh.forward_agent = true
-
-  #(49000..49900).each do |port|
-  #  config.vm.network "forwarded_port", guest: port, host: port, auto_correct: true
-  #end
+  config.vm.synced_folder "../", "/home/vagrant/workspace"
+  (49000..49900).each do |port|
+    config.vm.network "forwarded_port", guest: port, host: port, auto_correct: true
+  end
 
   #Shipyard
-  config.vm.forward_port 8005, 8005
+  config.vm.network "forwarded_port", guest: 8005, host: 8005
   #redis
-  config.vm.forward_port 6379, 6379
+  config.vm.network "forwarded_port", guest: 6379, host: 6379
 
   #elasticsearch
-  config.vm.forward_port 9200, 9200
-  config.vm.forward_port 9300, 9300
+  config.vm.network "forwarded_port", guest: 9200, host: 9200
+  config.vm.network "forwarded_port", guest: 9300, host: 9300
 
   #cassandra
-  config.vm.forward_port 7000, 7000
-  config.vm.forward_port 7001, 7001
-  config.vm.forward_port 7199, 7199
-  config.vm.forward_port 9160, 9160
-  config.vm.forward_port 9042, 9042
+  config.vm.network "forwarded_port", guest: 7000, host: 7000
+  config.vm.network "forwarded_port", guest: 7001, host: 7001
+  config.vm.network "forwarded_port", guest: 7199, host: 7199
+  config.vm.network "forwarded_port", guest: 9160, host: 9160
+  config.vm.network "forwarded_port", guest: 9042, host: 9042
 
   #mongo
-  config.vm.forward_port 27017, 27017
-  config.vm.forward_port 28017, 28017
+  config.vm.network "forwarded_port", guest: 27017, host: 27017
+  config.vm.network "forwarded_port", guest: 28017, host: 28017
 
   #kafka
-  config.vm.forward_port 9092, 9092
-  config.vm.forward_port 7203, 7203
+  config.vm.network "forwarded_port", guest: 9092, host: 9092
+  config.vm.network "forwarded_port", guest: 7203, host: 7203
 
   #zookeeper
-  config.vm.forward_port 2181, 2181
+  config.vm.network "forwarded_port", guest: 2181, host: 2181
 
   #jetty
-  config.vm.forward_port 8080, 8080
+  config.vm.network "forwarded_port", guest: 8080, host: 8080
 
   #Storm UI
-  config.vm.forward_port 8081, 8081
+  config.vm.network "forwarded_port", guest: 8081, host: 8081
 
   # riemann
-  config.vm.forward_port 5555, 5555, protocol: 'tcp'
-  config.vm.forward_port 5555, 5555, protocol: 'udp'
-  config.vm.forward_port 5556, 5556
-  config.vm.forward_port 5557, 5557
-  config.vm.forward_port 4567, 4567
+  config.vm.network "forwarded_port", guest: 5555, host: 5555, protocol: 'tcp'
+  config.vm.network "forwarded_port", guest: 5555, host: 5555, protocol: 'udp'
+  config.vm.network "forwarded_port", guest: 5556, host: 5556
+  config.vm.network "forwarded_port", guest: 5557, host: 5557
+  config.vm.network "forwarded_port", guest: 4567, host: 4567
 
   # graphite , collectd
-  config.vm.forward_port 2003, 2003
-  config.vm.forward_port 41080, 41080
-  config.vm.forward_port 41022, 41022
-  config.vm.forward_port 41826, 41826
+  config.vm.network "forwarded_port", guest: 2003, host: 2003
+  config.vm.network "forwarded_port", guest: 41080, host: 41080
+  config.vm.network "forwarded_port", guest: 41022, host: 41022
+  config.vm.network "forwarded_port", guest: 41826, host: 41826
 
   # Provision docker and new kernel if deployment was not done.
   # It is assumed Vagrant can successfully launch the provider instance.

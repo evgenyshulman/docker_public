@@ -107,9 +107,9 @@ update(){
 	docker pull crosswise/redis
 	docker pull crosswise/elasticsearch
 	docker pull crosswise/kafka
-	docker pull shipyard/shipyard
 	docker pull crosswise/graphite
-	#lopter/collectd-graphite
+
+	docker pull shipyard/shipyard
 }
 
 case "$1" in
